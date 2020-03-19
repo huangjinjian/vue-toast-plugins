@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--引入-->
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script src="../dist//vue-toast.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>vue-toast for mobile{{msg}}</h1>
+    <div class="demo-box">
+      <button @click="test">默认效果</button>
+      <button>5s后自动关闭</button>
+      <button>消失后执行回调</button>
+    </div>
+  </div>
+  <script type="module">
+    console.log(vueToast.default);
+    Vue.use(vueToast.default,{})
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        msg: "你好"
+      },
+      methods: {
+        test() {
+          // console.log(this);
+          // 使用
+          this.$toast.show("再来", {
+            duration: 1000
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
