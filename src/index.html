@@ -15,13 +15,13 @@
     <h1>vue-toast for mobile{{msg}}</h1>
     <div class="demo-box">
       <button @click="test">默认效果</button>
-      <button>5s后自动关闭</button>
-      <button>消失后执行回调</button>
+      <button @click="test">info</button>
+      <button @click="test2">success</button>
+      <button @click="test3">error</button>
     </div>
   </div>
   <script type="module">
-    console.log(vueToast.default);
-    Vue.use(vueToast.default,{})
+    Vue.use(vueToast.default,)
     var vm = new Vue({
       el: "#app",
       data: {
@@ -29,10 +29,16 @@
       },
       methods: {
         test() {
-          // console.log(this);
-          // 使用
-          this.$toast.show("再来", {
-            duration: 1000
+          this.$toast.info("info");
+        },
+        test3(){
+          this.$toast.error("error",{
+            duration : 1000
+          });
+        },
+        test2(){
+          this.$toast.success("success",{
+            duration : 5000
           });
         }
       }

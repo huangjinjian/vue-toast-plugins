@@ -8,7 +8,7 @@ let Toast = {};
 Toast.install = function(VUe, options) {
   // 默认配置
   var opt = {
-    duration: 3000
+    duration: 2000
   };
 
   // 如果用户传了参数就去循环覆盖这个参数
@@ -32,27 +32,41 @@ Toast.install = function(VUe, options) {
     // 返回一个新的实例
     var instance = new ToastController().$mount(document.createElement("div"));
 
-    // 拿到这个实例之后，我们就可以控制这个实例的显示 比如给它赋值 但是赋的值一般是通过函数传进来的
-    instance.message = message;
-    instance.visible = true;
     document.body.appendChild(instance.$el);
+    // 拿到这个实例之后，我们就可以控制这个实例的显示 比如给它赋值 但是赋的值一般是通过函数传进来的
+    setTimeout(() => {
+      instance.message = message;
+      instance.toastType = opt.toastType ? opt.toastType : "info";
+      instance.visible = true;
+    }, 10);
+
     setTimeout(() => {
       instance.visible = false;
-      document.body.removeChild(instance.$el);
+      setTimeout(() => {
+        document.body.removeChild(instance.$el);
+      }, 200);
     }, opt.duration);
   };
   Vue.prototype.$toast["show"] = function(message, option) {
-    Vue.prototype.$toast(message, option);
+    Vue.prototype.$toast(message, getOption("info", option));
   };
   Vue.prototype.$toast["success"] = function(message, option) {
-    Vue.prototype.$toast(message, option);
+    Vue.prototype.$toast(message, getOption("success", option));
   };
   Vue.prototype.$toast["info"] = function(message, option) {
-    Vue.prototype.$toast(message, option);
+    Vue.prototype.$toast(message, getOption("info", option));
   };
   Vue.prototype.$toast["error"] = function(message, option) {
-    Vue.prototype.$toast(message, option);
+    Vue.prototype.$toast(message, getOption("error", option));
   };
+
+  function getOption(toastType, option) {
+    if (typeof option == "object") {
+      return Object.assign({}, { toastType }, option);
+    } else {
+      return { toastType };
+    }
+  }
 };
 
 // 4.通过export default进行输出 要不然 vue.use() 是找不到的

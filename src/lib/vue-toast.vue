@@ -1,11 +1,11 @@
 <template>
   <section class="toast-container">
-    <div class="toast">
-      <span>{{message}}</span>
+    <div class="toast" :class="[toastType , visible ? 'show':'']">
+      <span>{{ message }}</span>
     </div>
   </section>
 </template>
-<style lang='scss'>
+<style lang="scss">
 .toast-container {
   position: absolute;
   left: 0;
@@ -21,9 +21,22 @@
     height: 60px;
     line-height: 60px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.61);
     border-radius: 10px;
-    color: white;
+    opacity: 0;
+    background-color: transparent;
+    transition: all 1s;
+  }
+  .show {
+    opacity: 1;
+  }
+  .info {
+    background-color: #3393ee;
+  }
+  .success {
+    background-color: #3cfc9c;
+  }
+  .error {
+    background-color: #fc423c;
   }
 }
 </style>
@@ -31,7 +44,9 @@
 export default {
   data() {
     return {
-      message: "hello Toast"
+      message: "hello Toast",
+      toastType: "",
+      visible: false
     };
   }
 };
