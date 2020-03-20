@@ -1,3 +1,4 @@
+import Vue from "vue";
 // 1.首先需要导入这个vue文件
 import ToastCompinet from "./vue-toast.vue";
 
