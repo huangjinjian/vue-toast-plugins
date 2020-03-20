@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   vue-toast-plugins
   webpack 构建 vue 插件 toast
 
@@ -25,3 +26,7 @@
   npm publish
 
   文件名 和 pageage.json 的 name 必须一致
+=======
+# vue-toast-plugins
+webpack构建vue插件toast
+>>>>>>> e76c4049ea86b75445ab7ab3939bb7ccf01a4a19
