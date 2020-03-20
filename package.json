@@ -2,7 +2,7 @@
   "name": "vue-toast-nanfeng",
   "version": "1.0.3",
   "description": "",
-  "main": "./lib/vue-toast.js",
+  "main": ".src/lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
