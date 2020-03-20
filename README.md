@@ -1,32 +1,52 @@
-<<<<<<< HEAD
-  vue-toast-plugins
-  webpack 构建 vue 插件 toast
+##vue-toast-plugins
 
-  1 初始化项目 npm init
+##webpack 构建 vue 插件 toast
 
-  2 建立 src 里面放源代码
+## 初始化项目 npm init
 
-  3 webpack.config.js 配置
+## 根目录建立 src 里面放源代码
 
-        library: "vueToast",   window.vueToast 即可访问到
-        libraryTarget: "umd"  // 表示cmd amd common等等都通用
+## webpack.config.js 配置
 
-  4 html script type="module"
+        *library: "vueToast",   window.vueToast 即可访问到
+        *libraryTarget: "umd"  // 表示cmd amd common等等都通用
 
-  5 webpack 解析 vue 文件的时候
-  vue-loader vue-style-loader 记得
+## html script type="module"
 
-  6 npm 登录
-  --- npm login
-  -- 用户名
-  -- 密码
-  -- 邮箱
+## webpack 解析 vue 文件的时候
 
-  7 npm 发布
-  npm publish
+\*vue-loader vue-style-loader 记得
 
-  文件名 和 pageage.json 的 name 必须一致
-=======
-# vue-toast-plugins
-webpack构建vue插件toast
->>>>>>> e76c4049ea86b75445ab7ab3939bb7ccf01a4a19
+## npm 登录
+
+- npm login
+- 用户名
+- 密码
+- 邮箱
+
+## npm 发布
+
+\* npm publish
+
+## 文件名 和 pageage.json 的 name 必须一致
+
+## vue-toast-plugins
+
+##webpack 构建 vue 插件 toast
+
+## 使用
+
+## npm i vue-toast-nanfeng
+
+##在 main.js 引入
+
+\*const toast = require('vue-toast-nanfeng')
+
+\*Vue.use(toast,option)
+
+##在实例使用如下：
+
+**this.\$toast.show('msg',option)
+**this.$toast.error('msg',option)
+**this.$toast.success('msg',option)
+\*\*this.\$toast.info('msg',option)
