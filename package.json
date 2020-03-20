@@ -1,8 +1,8 @@
 {
-  "name": "vue-toast",
+  "name": "vue-toast-nanfeng",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/vue-toast.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

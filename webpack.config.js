@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/lib/index.js",
 
   output: {
-    path: resolve(__dirname, "dist"),
+    path: resolve(__dirname, "lib"),
     filename: "vue-toast.js",
     library: "vueToast",
     libraryTarget: "umd"
@@ -31,5 +31,5 @@ module.exports = {
 
   plugins: [new VueLoaderPlugin()],
 
-  mode: "development"
+  mode: "production"
 };
