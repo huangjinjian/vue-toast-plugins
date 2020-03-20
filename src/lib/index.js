@@ -1,4 +1,4 @@
-import Vue from "vue";
+// import Vue from "vue";
 // 1.首先需要导入这个vue文件
 import ToastCompinet from "./vue-toast.vue";
 
@@ -6,7 +6,7 @@ import ToastCompinet from "./vue-toast.vue";
 let Toast = {};
 
 // 3.给这个Toast添加一个静态的类 vue插件有一个原则必须要定义一个install方法 只有通过install方法才能被 vue.use()所引用
-Toast.install = function(VUe, options) {
+Toast.install = function(Vue, options) {
   // 默认配置
   var opt = {
     duration: 2000
@@ -33,19 +33,22 @@ Toast.install = function(VUe, options) {
     // 返回一个新的实例
     var instance = new ToastController().$mount(document.createElement("div"));
 
-    document.body.appendChild(instance.$el);
     // 拿到这个实例之后，我们就可以控制这个实例的显示 比如给它赋值 但是赋的值一般是通过函数传进来的
-    setTimeout(() => {
-      instance.message = message;
-      instance.toastType = opt.toastType ? opt.toastType : "info";
+    instance.message = message;
+    instance.toastType = opt.toastType ? opt.toastType : "info";
+    document.body.appendChild(instance.$el);
+    // Vue 的特点之一就是响应式，但数据更新时，DOM 并不会立即更新。当我们有一个业务场景，需要在 DOM
+    // 更新之后再执行一段代码时，可以借助nextTick实现。
+    Vue.nextTick(function() {
       instance.visible = true;
-    }, 10);
+    });
 
     setTimeout(() => {
-      instance.visible = false;
+      instance.hide = true;
       setTimeout(() => {
+        instance.visible = false;
         document.body.removeChild(instance.$el);
-      }, 200);
+      }, 100);
     }, opt.duration);
   };
   Vue.prototype.$toast["show"] = function(message, option) {

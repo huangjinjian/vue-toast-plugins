@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <!--引入-->
   <script src="../node_modules/vue/dist/vue.js"></script>
-  <script src="../dist//vue-toast.js"></script>
+  <script src="./vue-toast.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,8 @@
     </div>
   </div>
   <script type="module">
-    Vue.use(vueToast.default,)
+    console.log(window.vueToast.default);
+    Vue.use(vueToast.default) 
     var vm = new Vue({
       el: "#app",
       data: {
@@ -29,16 +30,16 @@
       },
       methods: {
         test() {
-          this.$toast.info("info");
+          this.$toast.error("error",{
+          });
         },
         test3(){
           this.$toast.error("error",{
-            duration : 1000
           });
         },
         test2(){
           this.$toast.success("success",{
-            duration : 5000
+            duration : 2000
           });
         }
       }

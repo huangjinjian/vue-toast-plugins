@@ -1,6 +1,6 @@
 <template>
   <section class="toast-container">
-    <div class="toast" :class="[toastType , visible ? 'show':'']">
+    <div class="toast" :class="[toastType , hide ? 'vue_toast_hide' : '']" :v-show="visible">
       <span>{{ message }}</span>
     </div>
   </section>
@@ -22,12 +22,7 @@
     line-height: 60px;
     text-align: center;
     border-radius: 10px;
-    opacity: 0;
-    background-color: transparent;
-    transition: all 1s;
-  }
-  .show {
-    opacity: 1;
+    animation: toast-move-in-top cubic-bezier(0.22, 0.58, 0.12, 0.98) 1.5s;
   }
   .info {
     background-color: #3393ee;
@@ -38,6 +33,32 @@
   .error {
     background-color: #fc423c;
   }
+  .vue_toast_hide {
+    animation: toast-fade-out cubic-bezier(0.22, 0.58, 0.12, 0.98) 0.2s forwards;
+  }
+  @keyframes toast-move-in-top {
+    from {
+      opacity: 0;
+      transform: translate(0, -1.5em);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes toast-fade-out {
+    from {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translate(0, 1em);
+    }
+  }
 }
 </style>
 <script>
@@ -46,7 +67,8 @@ export default {
     return {
       message: "hello Toast",
       toastType: "",
-      visible: false
+      visible: false,
+      hide: false
     };
   }
 };
