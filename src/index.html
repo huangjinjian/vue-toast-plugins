@@ -6,7 +6,7 @@
   <title>Title</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <!--引入-->
-  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
   <script src="./vue-toast.js"></script>
 </head>
 
@@ -30,17 +30,13 @@
       },
       methods: {
         test() {
-          this.$toast.error("error",{
-          });
-        },
-        test3(){
-          this.$toast.error("error",{
-          });
+          this.$toast.info("info");
         },
         test2(){
-          this.$toast.success("success",{
-            duration : 2000
-          });
+          this.$toast.success("success");
+        },
+        test3(){
+          this.$toast.error("error");
         }
       }
     });
