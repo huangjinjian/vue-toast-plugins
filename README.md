@@ -1,3 +1,5 @@
+##  [demo](https://huangjinjian.github.io/vue-toast-plugins/src/index.html)
+
 ## 安装插件
 
 ## npm i vue-toast-nanfeng
